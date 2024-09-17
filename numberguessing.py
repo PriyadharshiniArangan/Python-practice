@@ -1,7 +1,32 @@
 import random
 
+top_of_range = input("Type a higher limit of number:  ")
 
-guessed_number = input("PLs guess a number between 1 to 10   ")
+if top_of_range.isdigit():
+    top_of_range = int(top_of_range)
 
-print 
+    if top_of_range <= 0:
+        print("Pls type a number larger than 0.")
+        quit()
+else:
+    print("Pls type a number next time!")
+    quit()
 
+
+random_number = random.randint(0, top_of_range)
+guesses = 0
+
+while True:
+    guesses += 1
+    user_guess = input("Make a guess:  ")
+    if user_guess.isdigit():
+        user_guess = int(user_guess)
+    if user_guess == random_number:
+        print("You got it!")
+        break
+    elif user_guess > random_number:
+        print("You are above the number")
+    else:
+        print("You are below the number!")
+
+print('You got it in', guesses, "guesses")
